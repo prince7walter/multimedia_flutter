@@ -4,6 +4,9 @@ import 'package:multimedia_mob/Etudiant/addMore.dart';
 import 'package:multimedia_mob/Mails/listeMail.dart';
 import 'package:multimedia_mob/Menu/drawer.dart';
 import 'package:multimedia_mob/SMS/listeSms.dart';
+import 'package:multimedia_mob/Mails/newMail.dart';
+import 'package:multimedia_mob/SMS/newSms.dart';
+
 
 void main ()
 {
@@ -28,6 +31,9 @@ class MyApp extends StatelessWidget
         '/etudiant': (context) => addMore(),
         '/mail': (context) => listeMail(),
         '/sms': (context) => listeSms(),
+        '/newmail': (context) => newMail(),
+        '/newsms': (context) => newSms(),
+
 
       },
     );
