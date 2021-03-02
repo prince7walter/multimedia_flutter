@@ -22,7 +22,6 @@ class newSms extends StatelessWidget {
 
   class _SMSPageState extends State<SMSPage> {
 
-
   String _name;
   String _obj;
   String _phoneNumber;
@@ -94,7 +93,7 @@ class newSms extends StatelessWidget {
   helperText: '',
   labelText: 'Votre message',
   ),
-  maxLines: 3,
+  maxLines: 10,
   ),
   const SizedBox(height: 24.0),
 

@@ -94,7 +94,7 @@ class newMail extends StatelessWidget {
   helperText: '',
   labelText: 'Votre message',
   ),
-  maxLines: 3,
+  maxLines: 10,
   ),
   const SizedBox(height: 24.0),
 

@@ -9,7 +9,83 @@ class listeC extends StatelessWidget{
       appBar: AppBar(
         title: Text('Classe'),
       ),
-      body: LoginExample2(),
+      body: GridView.count(
+        // Create a grid with 2 columns. If you change the scrollDirection to
+        // horizontal, this produces 2 rows.
+
+        crossAxisCount: 2,
+        // Generate 100 widgets that display their index in the List.
+        children: [
+          Center(
+              child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 3.0, style: BorderStyle.solid )),
+                  padding: const EdgeInsets.all(20.0),
+                  child:Text(
+                    'Licence 1',
+                    style: Theme.of(context).textTheme.headline5,
+                  )
+
+              ),
+          ),
+          Center(
+              child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 3.0, style: BorderStyle.solid )),
+              padding: const EdgeInsets.all(20.0),
+              child:Text(
+                'Licence 2',
+                style: Theme.of(context).textTheme.headline5,
+              )
+              ),
+          ),
+          Center(
+              child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 3.0, style: BorderStyle.solid )),
+                  padding: const EdgeInsets.all(20.0),
+                  child:Text(
+                    'Licence 3',
+                    style: Theme.of(context).textTheme.headline5,
+                  )
+              ),
+
+          ),
+          Center(
+              child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black, width: 3.0, style: BorderStyle.solid )),
+                    padding: const EdgeInsets.all(20.0),
+                    child:Text(
+                    'Master 1',
+                    style: Theme.of(context).textTheme.headline5,
+                  )
+              ),
+          ),
+          Center(
+              child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 3.0, style: BorderStyle.solid )),
+                  padding: const EdgeInsets.all(20.0),
+                  child:Text(
+                  'Master 2',
+                  style: Theme.of(context).textTheme.headline5,
+              )
+              ),
+          ),
+          Center(
+              child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black, width: 3.0, style: BorderStyle.solid )),
+                  padding: const EdgeInsets.all(20.0),
+                  child:Text(
+                    'Add More',
+                    style: Theme.of(context).textTheme.headline5,
+                  )
+              ),
+          ),
+        ]
+      ),
     );
   }
 }
@@ -23,25 +99,9 @@ class LoginExample2 extends StatefulWidget {
 }
 
 
-// Adapted from the text form demo in official gallery app:
-// https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/text_form_field_demo.dart
 class _LoginExampleState extends State<LoginExample2> {
   final GlobalKey<FormFieldState<String>> _passwordFieldKey =
   GlobalKey<FormFieldState<String>>();
-
-  String _name;
-  String _phoneNumber;
-  String _email;
-  String _password;
-
-  String _validateName(String value) {
-    if (value.isEmpty) return 'Name is required.';
-    final RegExp nameExp = RegExp(r'^[A-Za-z ]+$');
-    if (!nameExp.hasMatch(value)) {
-      return 'Please enter only alphabetical characters.';
-    }
-    return null;
-  }
 
   @override
   Widget build(BuildContext context) {
