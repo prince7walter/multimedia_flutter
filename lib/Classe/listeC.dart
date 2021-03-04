@@ -17,6 +17,9 @@ class listeC extends StatelessWidget{
         // Generate 100 widgets that display their index in the List.
         children: [
           Center(
+            
+          ),
+          Center(
               child: Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.black, width: 3.0, style: BorderStyle.solid )),

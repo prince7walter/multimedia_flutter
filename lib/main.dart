@@ -6,6 +6,7 @@ import 'package:multimedia_mob/Menu/drawer.dart';
 import 'package:multimedia_mob/SMS/listeSms.dart';
 import 'package:multimedia_mob/Mails/newMail.dart';
 import 'package:multimedia_mob/SMS/newSms.dart';
+import 'package:multimedia_mob/login.dart';
 
 
 void main ()
@@ -19,14 +20,15 @@ class MyApp extends StatelessWidget
   Widget build(BuildContext context)
   {
     return new MaterialApp(
-      title: 'Test App',
+      title: 'Manager Tool\'s',
       theme: new ThemeData(
           primarySwatch: Colors.pink
       ),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => Home(),
+        '/': (context) => login(),
+        '/home': (context) => Home(),
         '/classe': (context) => listeC(),
         '/etudiant': (context) => addMore(),
         '/mail': (context) => listeMail(),
