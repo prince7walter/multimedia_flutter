@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:async';
 
 
 class listeMail extends StatelessWidget{
@@ -20,8 +22,36 @@ class listeMail extends StatelessWidget{
   }
 }
 
-Future<http.Response> fetchMail() {
-  return http.get(Uri.https('jsonplaceholder.typicode.com', 'email'));
+Future<Mail> fetchMail() async {
+  final response = await http.get(Uri.parse('http://localhost:8000/api/email'));
+
+  if (response.statusCode == 200) {
+// If the server did return a 200 OK response,
+// then parse the JSON.
+    return Mail.fromJson(jsonDecode(response.body));
+  } else {
+// If the server did not return a 200 OK response,
+// then throw an exception.
+    throw Exception('Failed');
+  }
+}
+
+class Mail {
+  final int id_msg;
+  final String destinataire;
+  final String object;
+  final String date;
+
+  Mail({this.id_msg, this.destinataire, this.object, this.date});
+
+  factory Mail.fromJson(Map<String, dynamic> json) {
+    return Mail(
+        id_msg: json['id_mag'],
+        destinataire: json['destinataire'],
+        object: json['object'],
+        date: json['date'],
+    );
+  }
 }
 
 
