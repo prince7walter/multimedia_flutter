@@ -143,7 +143,7 @@ class _FormulairePageState extends State<FormulairePage> {
           const SizedBox(height: 24.0),
           // "Matricule" form.
 
-
+//
           TextFormField(
             textCapitalization: TextCapitalization.words,
             decoration: const InputDecoration(
