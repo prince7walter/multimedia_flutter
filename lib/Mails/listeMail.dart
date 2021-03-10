@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
 
 class listeMail extends StatelessWidget{
 
@@ -17,6 +19,11 @@ class listeMail extends StatelessWidget{
     );
   }
 }
+
+Future<http.Response> fetchMail() {
+  return http.get(Uri.https('jsonplaceholder.typicode.com', 'email'));
+}
+
 
 
 class DataTableExample extends StatefulWidget {
