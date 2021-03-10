@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class listeC extends StatelessWidget{
 
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,77 +17,177 @@ class listeC extends StatelessWidget{
         crossAxisCount: 2,
         // Generate 100 widgets that display their index in the List.
         children: [
-          Center(
-            
-          ),
-          Center(
-              child: Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black, width: 3.0, style: BorderStyle.solid )),
-                  padding: const EdgeInsets.all(20.0),
-                  child:Text(
-                    'Licence 1',
-                    style: Theme.of(context).textTheme.headline5,
-                  )
 
+          Center(
+              child:  FlatButton(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                      top: 0, bottom: 0, left: 0, right: 0),
+                  child: Text(
+                     'Licence1',
+                    textDirection: TextDirection.ltr,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      decoration: TextDecoration.none,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+                color: Colors.teal,
+                disabledColor: Colors.grey,
+                shape: new RoundedRectangleBorder(
+                    borderRadius:
+                    new BorderRadius.circular(10.0)),
+                onPressed: () {
+                  if (_formKey.currentState.validate()) {
+                    //_login();
+                  }
+                },
               ),
           ),
+
           Center(
-              child: Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black, width: 3.0, style: BorderStyle.solid )),
-              padding: const EdgeInsets.all(20.0),
-              child:Text(
-                'Licence 2',
-                style: Theme.of(context).textTheme.headline5,
-              )
+            child:  FlatButton(
+              child: Padding(
+                padding: EdgeInsets.only(
+                    top: 0, bottom: 0, left: 0, right: 0),
+                child: Text(
+                  'Licence2',
+                  textDirection: TextDirection.ltr,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                    decoration: TextDecoration.none,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
               ),
+              color: Colors.teal,
+              disabledColor: Colors.grey,
+              shape: new RoundedRectangleBorder(
+                  borderRadius:
+                  new BorderRadius.circular(10.0)),
+              onPressed: () {
+                if (_formKey.currentState.validate()) {
+                  //_login();
+                }
+              },
+            ),
           ),
           Center(
-              child: Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black, width: 3.0, style: BorderStyle.solid )),
-                  padding: const EdgeInsets.all(20.0),
-                  child:Text(
-                    'Licence 3',
-                    style: Theme.of(context).textTheme.headline5,
-                  )
+            child:  FlatButton(
+              child: Padding(
+                padding: EdgeInsets.only(
+                    top: 0, bottom: 0, left: 0, right: 0),
+                child: Text(
+                  'Licence3',
+                  textDirection: TextDirection.ltr,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                    decoration: TextDecoration.none,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
               ),
+              color: Colors.teal,
+              disabledColor: Colors.grey,
+              shape: new RoundedRectangleBorder(
+                  borderRadius:
+                  new BorderRadius.circular(10.0)),
+              onPressed: () {
+                if (_formKey.currentState.validate()) {
+                  //_login();
+                }
+              },
+            ),
 
           ),
           Center(
-              child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black, width: 3.0, style: BorderStyle.solid )),
-                    padding: const EdgeInsets.all(20.0),
-                    child:Text(
-                    'Master 1',
-                    style: Theme.of(context).textTheme.headline5,
-                  )
+            child:  FlatButton(
+              child: Padding(
+                padding: EdgeInsets.only(
+                    top: 0, bottom: 0, left: 0, right: 0),
+                child: Text(
+                  'Master1',
+                  textDirection: TextDirection.ltr,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                    decoration: TextDecoration.none,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
               ),
+              color: Colors.teal,
+              disabledColor: Colors.grey,
+              shape: new RoundedRectangleBorder(
+                  borderRadius:
+                  new BorderRadius.circular(10.0)),
+              onPressed: () {
+                if (_formKey.currentState.validate()) {
+                  //_login();
+                }
+              },
+            ),
           ),
           Center(
-              child: Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black, width: 3.0, style: BorderStyle.solid )),
-                  padding: const EdgeInsets.all(20.0),
-                  child:Text(
-                  'Master 2',
-                  style: Theme.of(context).textTheme.headline5,
-              )
+            child:  FlatButton(
+              child: Padding(
+                padding: EdgeInsets.only(
+                    top: 0, bottom: 0, left: 0, right: 0),
+                child: Text(
+                  'Master2',
+                  textDirection: TextDirection.ltr,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                    decoration: TextDecoration.none,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
               ),
+              color: Colors.teal,
+              disabledColor: Colors.grey,
+              shape: new RoundedRectangleBorder(
+                  borderRadius:
+                  new BorderRadius.circular(10.0)),
+              onPressed: () {
+                if (_formKey.currentState.validate()) {
+                  //_login();
+                }
+              },
+            ),
           ),
           Center(
-              child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black, width: 3.0, style: BorderStyle.solid )),
-                  padding: const EdgeInsets.all(20.0),
-                  child:Text(
-                    'Add More',
-                    style: Theme.of(context).textTheme.headline5,
-                  )
-              ),
-          ),
+    child:  FlatButton(
+    child: Padding(
+    padding: EdgeInsets.only(
+    top: 0, bottom: 0, left: 0, right: 0),
+    child: Text(
+    'Add More',
+    textDirection: TextDirection.ltr,
+    style: TextStyle(
+    color: Colors.white,
+    fontSize: 20.0,
+    decoration: TextDecoration.none,
+    fontWeight: FontWeight.normal,
+    ),
+    ),
+    ),
+    color: Colors.teal,
+    disabledColor: Colors.grey,
+    shape: new RoundedRectangleBorder(
+    borderRadius:
+    new BorderRadius.circular(10.0)),
+    onPressed: () {
+    if (_formKey.currentState.validate()) {
+    //_login();
+    }
+    },
+    ),
+          )
         ]
       ),
     );
