@@ -6,13 +6,25 @@ import 'dart:async';
 
 class listeMail extends StatelessWidget{
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Mail'),
       ),
-      body: DataTableExample(),
+      body: Center(
+          child: FutureBuilder<Mail>(
+              future: fetchMail(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Text(snapshot.data.date);
+                } else if (snapshot.hasError) {
+                  return Text("${snapshot.error}");
+                }
+              }
+          ),
+      ),
       floatingActionButton: FloatingActionButton(
           onPressed: () => Navigator.pushNamed(context,'/newmail'),
           tooltip: 'Increment',
@@ -23,7 +35,8 @@ class listeMail extends StatelessWidget{
 }
 
 Future<Mail> fetchMail() async {
-  final response = await http.get(Uri.parse('http://localhost:8000/api/email'));
+  final response = await http.get(Uri.parse('http://10.0.2.2:8000/api/email'));
+  //print(await http.read(Uri.parse('http://10.0.2.2:8000/api/email')));
 
   if (response.statusCode == 200) {
 // If the server did return a 200 OK response,
@@ -37,19 +50,19 @@ Future<Mail> fetchMail() async {
 }
 
 class Mail {
-  final int id_msg;
+  final String id_mesg;
   final String destinataire;
   final String object;
   final String date;
 
-  Mail({this.id_msg, this.destinataire, this.object, this.date});
+  Mail({this.id_mesg, this.destinataire, this.object, this.date});
 
-  factory Mail.fromJson(Map<String, dynamic> json) {
+  factory Mail.fromJson(Map<String,String> json) {
     return Mail(
-        id_msg: json['id_mag'],
+        id_mesg: json['id_mesg'],
         destinataire: json['destinataire'],
         object: json['object'],
-        date: json['date'],
+        date: json['created_at'],
     );
   }
 }
