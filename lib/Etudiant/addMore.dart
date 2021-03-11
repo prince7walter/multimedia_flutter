@@ -161,7 +161,6 @@ class _FormulairePageState extends State<FormulairePage> {
           ),
           const SizedBox(height: 24.0),
 
-
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
