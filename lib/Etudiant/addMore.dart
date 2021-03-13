@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart';
+TextEditingController na = new TextEditingController();
 
 class addMore extends StatelessWidget{
   @override
@@ -56,6 +59,7 @@ class _FormulairePageState extends State<FormulairePage> {
           const SizedBox(height: 24.0),
           // "Name" form.
           TextFormField(
+            controller: na,
             textCapitalization: TextCapitalization.words,
             decoration: const InputDecoration(
               border: UnderlineInputBorder(),
@@ -144,6 +148,7 @@ class _FormulairePageState extends State<FormulairePage> {
           const SizedBox(height: 24.0),
           // "Matricule" form.
           TextFormField(
+
             textCapitalization: TextCapitalization.words,
             decoration: const InputDecoration(
               border: UnderlineInputBorder(),
@@ -184,7 +189,11 @@ class _FormulairePageState extends State<FormulairePage> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
                     side: BorderSide(color: Colors.greenAccent)),
-                onPressed: _makePostRequest(),
+
+                onPressed: () {
+                  makePostRequest(na.text,_surname,_niveau,_matricule,_phoneNumber,_email);
+                },
+
                 color: Colors.greenAccent,
                 textColor: Colors.white,
                 child: Text("Valider".toUpperCase(),
@@ -201,24 +210,20 @@ class _FormulairePageState extends State<FormulairePage> {
     );
   }
 
-  _makePostRequest() async {
+
+  Future<void> makePostRequest(String nom,String pre,String niv,String mat,String pho,String ml) async {
     // set up POST request arguments
-    String url = 'http://localhost:8000/api/students/';
+    String url = 'http://192.168.8.108:9000/api/students/';
+    print(niv);
+    print(nom);
     Map<String, String> headers = {"Content-type": "application/json"};
-    String json = {"nom":_name, "surname":_surname, "classe":_niveau, "matricule":_matricule , "mobile":_phoneNumber, "email":_email} as String;
+    String json = '{"name":"AAAAA", "surname":"AAAAA", "classe":1, "matricule":"AAAAA" , "mobile":"AAAAA", "email":"AAAAA"}';
     // make POST request
     Response response = await post(Uri.parse(url), headers: headers, body: json);
     // check the status code for the result
     int statusCode = response.statusCode;
-    // this API passes back the id of the new item added to the body
-    String body = response.body;
-    // {
-    //   "title": "Hello",
-    //   "body": "body text",
-    //   "userId": 1,
-    //   "id": 101
-    // }
+    print(statusCode);
+
   }
 }
-
 

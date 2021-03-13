@@ -4,8 +4,8 @@ import 'dart:convert';
 import 'dart:async';
 
 
-class listeMail extends StatelessWidget{
-
+class listeMail extends StatefulWidget{
+var tableau;
 
   @override
   Widget build(BuildContext context) {
@@ -32,16 +32,24 @@ class listeMail extends StatelessWidget{
     ),
     );
   }
+
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    throw UnimplementedError();
+  }
 }
 
 Future<Mail> fetchMail() async {
   final response = await http.get(Uri.parse('http://10.0.2.2:8000/api/email'));
   //print(await http.read(Uri.parse('http://10.0.2.2:8000/api/email')));
+  final jsonresponse = json.decode(response.body);
 
+  print(jsonresponse[0]['object']);
   if (response.statusCode == 200) {
 // If the server did return a 200 OK response,
 // then parse the JSON.
-    return Mail.fromJson(jsonDecode(response.body));
+    return Mail.fromJson(jsonresponse);
   } else {
 // If the server did not return a 200 OK response,
 // then throw an exception.
@@ -57,7 +65,7 @@ class Mail {
 
   Mail({this.id_mesg, this.destinataire, this.object, this.date});
 
-  factory Mail.fromJson(Map<String,String> json) {
+  factory Mail.fromJson(Map<String,dynamic> json) {
     return Mail(
         id_mesg: json['id_mesg'],
         destinataire: json['destinataire'],
