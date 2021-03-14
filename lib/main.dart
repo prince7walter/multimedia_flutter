@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:multimedia_mob/Classe/listeC.dart';
+import 'package:multimedia_mob/Classe/student.dart';
 import 'package:multimedia_mob/Etudiant/addMore.dart';
 import 'package:multimedia_mob/Mails/listeMail.dart';
 import 'package:multimedia_mob/Menu/drawer.dart';
@@ -27,14 +28,15 @@ class MyApp extends StatelessWidget
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (context) => Login(),
-        '/home': (context) => Home(),
+        '/': (context) => Home(),
+        //'/home': (context) => Home(),
         '/classe': (context) => listeC(),
         '/etudiant': (context) => addMore(),
         '/mail': (context) => listeMail(),
         '/sms': (context) => listeSms(),
         '/newmail': (context) => newMail(),
         '/newsms': (context) => newSms(),
+        '/student': (context) => Student(),
 
 
       },

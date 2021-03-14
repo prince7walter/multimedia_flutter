@@ -4,27 +4,14 @@ import 'dart:convert';
 import 'dart:async';
 
 
-class listeMail extends StatefulWidget{
-var tableau;
-
+class listeMail extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Mail'),
       ),
-      body: Center(
-          child: FutureBuilder<Mail>(
-              future: fetchMail(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Text(snapshot.data.date);
-                } else if (snapshot.hasError) {
-                  return Text("${snapshot.error}");
-                }
-              }
-          ),
-      ),
+      body: DataTableExample(),
       floatingActionButton: FloatingActionButton(
           onPressed: () => Navigator.pushNamed(context,'/newmail'),
           tooltip: 'Increment',
@@ -32,24 +19,16 @@ var tableau;
     ),
     );
   }
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
-  }
 }
 
 Future<Mail> fetchMail() async {
   final response = await http.get(Uri.parse('http://10.0.2.2:8000/api/email'));
   //print(await http.read(Uri.parse('http://10.0.2.2:8000/api/email')));
-  final jsonresponse = json.decode(response.body);
 
-  print(jsonresponse[0]['object']);
   if (response.statusCode == 200) {
 // If the server did return a 200 OK response,
 // then parse the JSON.
-    return Mail.fromJson(jsonresponse);
+    return Mail.fromJson(jsonDecode(response.body));
   } else {
 // If the server did not return a 200 OK response,
 // then throw an exception.
@@ -65,7 +44,7 @@ class Mail {
 
   Mail({this.id_mesg, this.destinataire, this.object, this.date});
 
-  factory Mail.fromJson(Map<String,dynamic> json) {
+  factory Mail.fromJson(Map<String,String> json) {
     return Mail(
         id_mesg: json['id_mesg'],
         destinataire: json['destinataire'],
@@ -79,11 +58,9 @@ class Mail {
 
 class DataTableExample extends StatefulWidget {
   const DataTableExample({Key key}) : super(key: key);
-
   @override
   _DataTableExampleState createState() => _DataTableExampleState();
 }
-
 class _DataTableExampleState extends State<DataTableExample> {
   int _rowsPerPage = PaginatedDataTable.defaultRowsPerPage;
   @override
@@ -129,7 +106,6 @@ class Dessert {
   final String nom;
   final String message;
   final String date;
-
   bool selected = false;
 }
 

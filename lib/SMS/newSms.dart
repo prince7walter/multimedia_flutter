@@ -97,28 +97,10 @@ class newSms extends StatelessWidget {
   ),
   const SizedBox(height: 24.0),
 
-
-
-
   Row(
   mainAxisAlignment: MainAxisAlignment.end,
   children: <Widget>[
-  FlatButton(
-  shape: RoundedRectangleBorder(
-  borderRadius: BorderRadius.circular(18.0),
-  side: BorderSide(color: Colors.red)),
-  color: Colors.white,
-  textColor: Colors.red,
-  padding: EdgeInsets.all(8.0),
-  onPressed: () {},
-  child: Text(
-  "Annuler".toUpperCase(),
-  style: TextStyle(
-  fontSize: 14.0,
-  ),
-  ),
-  ),
-  SizedBox(width: 10),
+
   RaisedButton(
     shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(18.0),

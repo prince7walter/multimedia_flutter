@@ -15,7 +15,6 @@ class addMore extends StatelessWidget{
   }
 }
 
-
 // Formulaire pour enregistrer Etudiants FormulairePage
 class FormulairePage extends StatefulWidget {
   const FormulairePage({Key key}) : super(key: key);
@@ -168,31 +167,14 @@ class _FormulairePageState extends State<FormulairePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              FlatButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.red)),
-                color: Colors.white,
-                textColor: Colors.red,
-                padding: EdgeInsets.all(8.0),
-                onPressed: () {},
-                child: Text(
-                  "Annuler".toUpperCase(),
-                  style: TextStyle(
-                    fontSize: 14.0,
-                  ),
-                ),
-              ),
-              SizedBox(width: 10),
+
               RaisedButton(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
                     side: BorderSide(color: Colors.greenAccent)),
-
                 onPressed: () {
                   makePostRequest(na.text,_surname,_niveau,_matricule,_phoneNumber,_email);
                 },
-
                 color: Colors.greenAccent,
                 textColor: Colors.white,
                 child: Text("Valider".toUpperCase(),
