@@ -50,7 +50,7 @@ class drawer extends StatelessWidget
           ListTile(
             leading: Icon(Icons.person_add),
             title: const Text('Etudiants'),
-            onTap: () => Navigator.pushNamed(context,'/etd'),
+            onTap: () => Navigator.pushNamed(context,'/etudiant'),
           ),
         ],
       ),

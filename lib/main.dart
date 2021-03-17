@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:multimedia_mob/provider/url.dart';
+import 'package:multimedia_mob/view/addMore.dart';
 import 'package:multimedia_mob/view/classe.dart';
 import 'package:multimedia_mob/view/drawer/spDrawer.dart';
 import 'package:multimedia_mob/view/l1Page.dart';
@@ -30,12 +31,8 @@ class MyApp extends StatelessWidget {
       home: Home(),
         routes: <String,WidgetBuilder>{
           '/spDrawer':(BuildContext context) => spDrawer(),
-          '/etd1':(BuildContext context) => l1Page(1),
-          '/etd2':(BuildContext context) => l1Page(2),
-          '/etd3':(BuildContext context) => l1Page(3),
-          '/etd4':(BuildContext context) => l1Page(4),
-          '/etd5':(BuildContext context) => l1Page(5),
           '/classe':(BuildContext context) => classe(),
+          '/etudiant':(BuildContext Context) => addMore(),
 
           //'/spadmin':(BuildContext context) => new drawersp(email:email,name: name),
           //'/etudiantadmin':(BuildContext context) => new draweret(email:email,name:name),
@@ -79,6 +76,7 @@ class _Home extends State<Home> {
       if (statusCode == 200) {
         var rep = json.decode(response.body);
         var type = (rep["type"]);
+        //var userName =(rep["nom"]);
         if (type == 1) {
           Navigator.pushReplacementNamed(context, '/spDrawer');
         } else if (type == 2) {
