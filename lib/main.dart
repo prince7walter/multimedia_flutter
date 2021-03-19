@@ -7,6 +7,7 @@ import 'package:multimedia_mob/provider/url.dart';
 import 'package:multimedia_mob/view/addMore.dart';
 import 'package:multimedia_mob/view/classe.dart';
 import 'package:multimedia_mob/view/drawer/spDrawer.dart';
+import 'package:multimedia_mob/view/drawer/stdDrawer.dart';
 import 'package:multimedia_mob/view/l1Page.dart';
 import 'package:multimedia_mob/view/newMail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,7 +31,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Home(),
         routes: <String,WidgetBuilder>{
-          '/spDrawer':(BuildContext context) => spDrawer(),
           '/classe':(BuildContext context) => classe(),
           '/etudiant':(BuildContext Context) => addMore(),
 
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         }
     );
   }
-  
+
 }
 
 class Home extends StatefulWidget
@@ -76,14 +76,28 @@ class _Home extends State<Home> {
       if (statusCode == 200) {
         var rep = json.decode(response.body);
         var type = (rep["type"]);
-        //var userName =(rep["nom"]);
+        var userName = (rep["user"]);
+        var userMail = (rep["mail"]);
+        var id = (rep["id"]);
+        //print(userMail);
+        //print(userName);
         if (type == 1) {
-          Navigator.pushReplacementNamed(context, '/spDrawer');
+          Navigator.push(context,
+            MaterialPageRoute<void>(
+              builder:(BuildContext context) {
+                return spDrawer(userName,userMail);},
+            ),
+          );
         } else if (type == 2) {
-          Navigator.pushReplacementNamed(context, '/etudiantDrawer');
+          Navigator.push(context,
+            MaterialPageRoute<void>(
+              builder:(BuildContext context) {
+                return stdDrawer(userName,userMail,id);},
+            ),
+          );
+        } else {
+          print('erreur');
         }
-      } else {
-        print('erreur');
       }
     }
     return Scaffold(

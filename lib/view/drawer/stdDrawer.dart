@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:multimedia_mob/main.dart';
+import 'package:multimedia_mob/view/inboxPage.dart';
 
-class spDrawer extends StatefulWidget
+import '../../main.dart';
+
+class stdDrawer extends StatefulWidget
 {
+
   var userName;
   var userMail;
-  spDrawer(userName, userMail){this.userName=userName; this.userMail=userMail;}
+  var id;
+  stdDrawer(userName, userMail, id){this.userName=userName; this.userMail=userMail; this.id=id;}
 
   @override
   State<StatefulWidget> createState() {
-    return _spDrawer(userName,userMail);
+    return _stdDrawer(userName,userMail,id);
   }
 }
 
-
-
-class _spDrawer extends State<spDrawer>
+class _stdDrawer extends State<stdDrawer>
 {
-
   var userName;
   var userMail;
-  _spDrawer(userName, userMail){this.userName=userName; this.userMail=userMail;}
+  var id;
+  _stdDrawer(userName, userMail, id){this.userName=userName; this.userMail=userMail; this.id=id;}
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class _spDrawer extends State<spDrawer>
       appBar: new AppBar(
         title: new Text('DashBord'),
       ),
-      drawer: drawer(userName,userMail), // Drawer
+      drawer: drawer(userName,userMail,id), // Drawer
       body: const Center(
         child: Text('ICI LE DASHBORD ET AUTRE TOUT CA'),
       ),
@@ -39,10 +41,10 @@ class _spDrawer extends State<spDrawer>
 
 class drawer extends StatelessWidget
 {
-
   var userName;
   var userMail;
-  drawer(userName, userMail){this.userName=userName; this.userMail=userMail;}
+  var id;
+  drawer(userName, userMail, id){this.userName=userName; this.userMail=userMail; this.id=id;}
 
   @override
   Widget build(BuildContext context) {
@@ -57,14 +59,14 @@ class drawer extends StatelessWidget
             ),
           ),
           ListTile(
-            leading: Icon(Icons.people_outline),
-            title: const Text('Classes'),
-            onTap: () => Navigator.pushNamed(context,'/classe'),
-          ),
-          ListTile(
-            leading: Icon(Icons.person_add),
-            title: const Text('Etudiants'),
-            onTap: () => Navigator.pushNamed(context,'/etudiant'),
+            leading: Icon(Icons.mail),
+            title: const Text('Boite de réception'),
+            onTap: () => Navigator.push(context,
+              MaterialPageRoute<void>(
+                  builder:(BuildContext context) {
+                    return inboxPage(id);}
+              ),
+            ),
           ),
           ListTile(
             leading: Icon(Icons.exit_to_app),
